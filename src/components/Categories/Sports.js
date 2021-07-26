@@ -10,6 +10,7 @@ export const Sports = () => {
     const [CorrectAnswers, setCorrectAnswers] = useState(0)
     const [WrongAnswers, setWrongAnswers] = useState(0)
     const [FinalPercentage, setFinalPercentage] = useState(0)
+    const [InitialTime, setInitialTime] = useState(null)
 
     useEffect(() => {
         getInitialTime();
@@ -17,11 +18,10 @@ export const Sports = () => {
 
     function getInitialTime(){
         const Day = new Date();
-        let Time = Day.getHours() + ':' + Day.getMinutes() + ':' + Day.getSeconds();
-        console.log(Time)
+        setInitialTime(Day.getHours() + ':' + Day.getMinutes() + ':' + Day.getSeconds());
     }
 
-    console.log(QuestionID, CorrectAnswers, WrongAnswers, FinalPercentage)
+    // console.log(QuestionID, CorrectAnswers, WrongAnswers, FinalPercentage, InitialTime)
 
     return (
         <div>
@@ -56,7 +56,8 @@ export const Sports = () => {
             {!!FinalPercentage && 
                 <EndScreen 
                     TotalPercentage={FinalPercentage} 
-                    CloseSportsPage={setCloseSportsPage} 
+                    CloseSportsPage={setCloseSportsPage}
+                    InitialTimeRound={InitialTime}
                 />
             }
         </div>
