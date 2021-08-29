@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'PrimaryFont';
+    src: url('../../assets/Fonts/BebasNeue-Regular.ttf');
+}
+
+.headerCategory {
+    &--Font {
+        margin-right: 20px;
+        font-size: 70px;
+        // font-family: 'Courier New', Courier, monospace;
+        font-family: 'PrimaryFont';
+        font-weight: bold;
+        color: white;
+    }
+    &--Image {
+        width: 250px;
+        height: 250px;
+    }
+    &--Container {
+        float: left;
+        background-color: $primary;
+        width: 300px;
+        height: auto;
+        border-radius: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        padding: 10px;
+    }
+}
