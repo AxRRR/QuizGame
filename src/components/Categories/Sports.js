@@ -1,18 +1,36 @@
-import React from 'react';
-import { P } from '../../helpers/P';
+import React, { useState } from 'react';
+import { CompareAnswers } from '../../helpers/CompareAnswers';
 import { SportsQuestions } from '../../resources/SportsQuiz';
 
 export const Sports = () => {
-    console.log(SportsQuestions)
+    const [QuestionID, setQuestionID] = useState(1)
+    const [Index, setIndex] = useState(0)
+    const [CorrectAnswers, setCorrectAnswers] = useState(0)
+    const [WrongAnswers, setWrongAnswers] = useState(0)
+
+    console.log(QuestionID, CorrectAnswers, WrongAnswers)
+
     return (
         <div>
-            {SportsQuestions.Questions.map((q) => 
+            {SportsQuestions.Questions.slice(Index, QuestionID).map((q) => 
             <div>
-                <P>{q.question}</P>
-            {q.answers.map((q) => 
-            <div key={q.id}>
-                <P onClick={() => console.log(q.isTrue)}>{q.answer}</P>
-            </div>)}
+                <h1>{q.question}</h1>
+                {q.answers.map((q) => 
+                    <div key={q.id}>
+                        <p className='StyleLetter--answers'
+                            onClick={() => CompareAnswers(
+                                QuestionID,
+                                setQuestionID,
+                                Index,
+                                setIndex,
+                                q.isTrue,
+                                CorrectAnswers,
+                                setCorrectAnswers,
+                                WrongAnswers,
+                                setWrongAnswers
+                            )}>{q.answer}</p>
+                    </div>
+                )}
             </div>
             )}
         </div>

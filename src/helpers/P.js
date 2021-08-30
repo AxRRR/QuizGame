@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const P = props => {
+export const P = ({ children, answers = false }) => {
     return (
-        <div className='StyleLetter'>{props.children}</div>
+        <div>
+            {answers && <div className='StyleLetter--answers'>{children}</div>}
+            {!answers && <div className='StyleLetter'>{children}</div>}
+        </div>
     );
 };

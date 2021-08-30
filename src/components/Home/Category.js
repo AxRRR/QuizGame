@@ -1,15 +1,13 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-// export const Category = ({ category }) => {
-//     return (
-//         <div>
-//             {category === 1 && <Link to='/sports' />}
-//         </div>
-//     );
-// };
+export const Category = ({ category }) => {
+    return (
+        <div>
+        </div>
+    );
+};
 
-// Category.propTypes = {
-//     category: PropTypes.number
-// };
+Category.propTypes = {
+    category: PropTypes.number
+};
