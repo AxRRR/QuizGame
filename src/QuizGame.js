@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Sports } from './components/Categories/Sports';
-import { Home } from './components/Home/Home';
+import { NewPlayer } from './components/Home/NewPlayer';
 import { Container } from './helpers/Container';
 
 export const QuizGame = () => {
@@ -11,7 +11,7 @@ export const QuizGame = () => {
             <Switch>
                 <Route exact path='/home'>
                     <Container>
-                        <Home />
+                        <NewPlayer/>
                     </Container>
                 </Route>
                 <Route exact path='/category/sports'>

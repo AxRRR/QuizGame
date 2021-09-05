@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CompareAnswers } from '../../helpers/CompareAnswers';
+import { CreateTimer } from '../../helpers/CreateTImer';
+import { GetActualTime } from '../../helpers/GetActualTime';
 import { SportsQuestions } from '../../resources/SportsQuiz';
 import { EndScreen } from '../EndScreen';
 
@@ -17,16 +19,17 @@ export const Sports = () => {
     }, [])
 
     function getInitialTime(){
-        const Day = new Date();
-        setInitialTime(Day.getHours() + ':' + Day.getMinutes() + ':' + Day.getSeconds());
+        setInitialTime(
+            GetActualTime()
+        );
     }
 
     // console.log(QuestionID, CorrectAnswers, WrongAnswers, FinalPercentage, InitialTime)
 
     return (
         <div>
+                {CreateTimer(60)}
             {CloseSportsPage === true && <div>
-                {/* {getInitialTime()} */}
                 {SportsQuestions.Questions.slice(Index, QuestionID).map((q) => 
                 <div key={Math.random()}>
                     <h1>{QuestionID + '/' + SportsQuestions.Questions.length}</h1>
@@ -45,7 +48,8 @@ export const Sports = () => {
                                     WrongAnswers,
                                     setWrongAnswers,
                                     setFinalPercentage
-                                )}>
+                                )}
+                                onClickCapture={() => CreateTimer(60)}>
                                 {q.answer}
                             </p>
                         </div>

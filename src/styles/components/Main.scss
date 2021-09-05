@@ -28,6 +28,19 @@ body {
     }
 }
 
+@media all and (max-width: 1024px) {
+    .ContainerStyle {
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        // background-color: aliceblue;
+        &--Flex {
+            display: flex;
+        }
+    }
+}
+
 .StyleLetter {
     font-size: 30px;
     font-family: 'PrimaryFont';

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { GetActualTime } from '../helpers/GetActualTime';
 import { TransformTime } from '../helpers/TransformTime';
 
 export const EndScreen = ({ TotalPercentage = 0, CloseSportsPage, InitialTimeRound }) => {
@@ -6,8 +7,10 @@ export const EndScreen = ({ TotalPercentage = 0, CloseSportsPage, InitialTimeRou
     const [CompleteTime, setCompleteTime] = useState(null)
 
     useEffect(() => {
-        const Day = new Date();
-        setFinalTIme(Day.getHours() + ':' + Day.getMinutes() + ':' + Day.getSeconds());
+        
+        setFinalTIme(
+            GetActualTime()
+        );
 
         function EndTheRound(){
             CloseSportsPage(false);

@@ -1,3 +1,5 @@
+import { CreateTimer } from "./CreateTImer";
+
 export function CompareAnswers(
     QuestionID,
     setQuestionID,
@@ -39,5 +41,5 @@ export function CompareAnswers(
 
     setQuestionID(QuestionID+1)
     setNewIndex(Index+1)
-
+    // CreateTimer(60, true)
 }
