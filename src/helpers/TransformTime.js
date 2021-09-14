@@ -18,7 +18,7 @@ export function TransformTime(InitialTime = null, FinalTime = null){
         Date2.getMinutes(), Date1.getSeconds() - 
         Date2.getSeconds());
 
-        // Transform to string the final time
+        // Transform to string the total time
 
         let FinalTimeTransform =
         (Date1.getHours() ? Date1.getHours() + 

@@ -1,10 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { NameUserContext } from '../../Context/NameUserContext';
 
 export const Home = () => {
+    const { nameuser } = useContext(NameUserContext);
+
     return (
         <Fragment>
-            <h1>Escoge una categoria para comenzar el juego</h1>
+            <h1>¡Hola {nameuser}, escoge una categoria para comenzar el juego!</h1>
             <header className='ContainerStyle--Flex'>
                 <Link to='/category/sports' className='headerCategory--Container'>
                     <div className='headerCategory--Font'>
