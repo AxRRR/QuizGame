@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { CompareAnswers } from '../../helpers/CompareAnswers';
+import { Container } from '../../helpers/Container';
 // import { CreateTimer } from '../../helpers/CreateTImer';
 import { GetActualTime } from '../../helpers/GetActualTime';
+import { P } from '../../helpers/P';
 // import { useCountdown } from '../../hooks/useCountdown';
 
 import { EndScreen } from '../EndScreen';
@@ -56,22 +58,34 @@ export const Answers = ({ ArrType }) => {
         <div>
             {/* {CreateTimer(60)} */}
             {/* <h1>{CountIndicator}</h1> */}
+            <Container fontColor={'#84b6f4'}>
+
+            
             {CloseSportsPage === true && <div>
                 {ArrType.slice(Index, QuestionID).map((q) => 
                 <div key={Math.random()}>
                     <h1>{QuestionID + '/' + ArrType.length}</h1>
                     <h1>{q.question}</h1>
                     {q.answers.map((q) => 
-                        <div key={q.id}>
-                            <p className='StyleLetter--answers'
-                                onClick={() => ShowResponse(q.isTrue)}
-                                >
-                                {q.answer}
-                            </p>
+                    <label 
+                        className='container' 
+                        key={q.id}>
+                            {q.answer}
+                        {ShowButtonNext === true ? <input 
+                            type='checkbox' 
+                            name='radio'  
+                        /> 
+                        :
+                        <input 
+                            type='checkbox' 
+                            name='radio' 
+                            onClick={() => ShowResponse(q.isTrue)} 
+                        />}
+                        <span className='checkmark'></span>
                             {ShowResponseText === true && <div>
-                                {q.isTrue ? <label>Respuesta correcta</label> : <label>Respuesta incorrecta</label>}
+                                {q.isTrue ? <P correct={'green'}>Respuesta correcta</P> : <P correct={'red'}>Respuesta incorrecta</P>}
                                 </div>}
-                        </div>
+                    </label>
                     )}
                     {ShowButtonNext && <button
                         onClick={() => CompareAnswers(
@@ -84,12 +98,15 @@ export const Answers = ({ ArrType }) => {
                             setCorrectAnswers,
                             WrongAnswers,
                             setWrongAnswers,
-                            setFinalPercentage
+                            setFinalPercentage,
+                            setShowResponseText,
+                            setShowButtonNext
                         )}>Continuar
                     </button>}
                 </div>
                 )}
             </div>}
+            </Container>
             {!!FinalPercentage && 
                 <EndScreen 
                     TotalPercentage={FinalPercentage} 

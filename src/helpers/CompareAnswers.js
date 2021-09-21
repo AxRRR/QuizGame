@@ -8,7 +8,9 @@ export function CompareAnswers(
     setCorrectAnswers, 
     WrongAnswers,
     setWrongAnswers,
-    setFinalPercentage){
+    setFinalPercentage,
+    setShowResponseText,
+    setShowButtonNext){
 
     // Total Number of the all questions
 
@@ -39,4 +41,6 @@ export function CompareAnswers(
 
     setQuestionID(QuestionID+1)
     setNewIndex(Index+1)
+    setShowResponseText(false)
+    setShowButtonNext(false)
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const Container = props => {
+export const Container = ({ children, fontColor }) => {
     return (
-        <div className='ContainerStyle'>{props.children}</div>
+        <div className='ContainerStyle' style={{backgroundColor: fontColor}}>{children}</div>
     );
 };

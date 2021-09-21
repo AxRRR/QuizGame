@@ -1,10 +1,12 @@
 import React from 'react';
 
-export const P = ({ children, answers = false }) => {
+export const P = ({ children, answers = null, correct }) => {
     return (
         <div>
-            {answers && <div className='StyleLetter--answers'>{children}</div>}
-            {!answers && <div className='StyleLetter'>{children}</div>}
+            {/* {answers === true ? <div className='StyleLetter--answers'>{children}</div>
+            : <div className='StyleLetter'>{children}</div>} */}
+            {correct === 'green' && <div className='CorrectAnswer--green'>{children}</div>}
+            {correct === 'red' && <div className='CorrectAnswer--red'>{children}</div>}
         </div>
     );
 };

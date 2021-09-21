@@ -8,11 +8,11 @@ export const Home = () => {
     return (
         <Fragment>
             <h1>¡Hola {nameuser}, escoge una categoria para comenzar el juego!</h1>
-            <header className='ContainerStyle--Flex'>
+            <header className='ContainerStyle'>
                 <Link to='/category/sports' className='headerCategory--Container'>
                     <div className='headerCategory--Font'>
                         <img 
-                            src='https://static.vecteezy.com/system/resources/previews/001/505/098/non_2x/soccer-sport-game-cartoon-free-vector.jpg'
+                            src='https://pbs.twimg.com/media/EVpqufhUUAIqqu8.jpg'
                             alt='Sports'
                             className='headerCategory--Image'
                             />
@@ -22,7 +22,7 @@ export const Home = () => {
                 <Link to='/category/history' className='headerCategory--Container'>
                     <div className='headerCategory--Font'>  
                         <img 
-                            src='https://i.pinimg.com/originals/85/f2/13/85f21330443925e97068150337a370e4.jpg'
+                            src='https://www.cuhm.edu.mx/wpcuhm/wp-content/uploads/2018/05/creatividad-historia2.jpg'
                             alt='Sports'
                             className='headerCategory--Image'
                         />
@@ -32,7 +32,7 @@ export const Home = () => {
                 <Link to='/category/movies' className='headerCategory--Container'>
                     <div className='headerCategory--Font'>
                         <img 
-                            src='https://previews.123rf.com/images/kakigori/kakigori1611/kakigori161100035/68353294-dos-cine-linda-palomitas-de-ma%C3%ADz-y-refrescos-de-cola-animada-amigos-de-personaje-de-la-mano.jpg'
+                            src='https://cdn.forbes.co/2020/02/Sala-de-cine-Reuters.jpg'
                             alt='Sports'
                             className='headerCategory--Image'
                         />
@@ -42,7 +42,7 @@ export const Home = () => {
                 <Link to='/category/tecnologie' className='headerCategory--Container'>
                     <div className='headerCategory--Font'>
                         <img 
-                            src='https://i.pinimg.com/736x/3a/dc/62/3adc629089d01b6c834153921741f959.jpg'
+                            src='https://economipedia.com/wp-content/uploads/Tecnolog%C3%ADa-de-producto.jpg'
                             alt='Sports'
                             className='headerCategory--Image'
                         />

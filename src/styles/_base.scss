@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'PrimaryFont';
+    src: url('../assets/Fonts/BebasNeue-Regular.ttf');
+}
+
+//  {
+//     
+// }
+
+.CorrectAnswer {
+    
+    &--green {
+        color: rgb(0, 163, 0);
+        font-family: 'PrimaryFont';
+    }
+    &--red {
+        color: rgb(250, 52, 52);
+        font-family: 'PrimaryFont';
+    }
+}

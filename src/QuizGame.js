@@ -27,9 +27,7 @@ export const QuizGame = () => {
                         </Container>
                     </Route>
                     <Route exact path='/category/sports'>
-                        <Container>
                         {showSports && <Answers ArrType={SportsQuestions.Questions} CloseSportsPage={setShowSports} />}
-                        </Container>
                     </Route>
                     <Redirect to='/home' />
                 </Switch>
