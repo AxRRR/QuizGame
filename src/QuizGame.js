@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Answers } from './components/Categories/Answers';
-import { NewPlayer } from './components/Home/NewPlayer';
+import { Authentication } from './components/Home/Authentication';
 import { NameUserContext } from './Context/NameUserContext';
 import { Container } from './helpers/Container';
 import { SportsQuestions } from './resources/SportsQuiz';
@@ -10,6 +10,7 @@ export const QuizGame = () => {
     const [showSports, setShowSports] = useState(true)
     const [isEmpty, setIsEmpty] = useState(false)
     const [nameuser, setNameuser] = useState(null)
+    const [isLogin, setisLogin] = useState(false)
 
     return (
         <div>
@@ -18,12 +19,14 @@ export const QuizGame = () => {
                     isEmpty,
                     setIsEmpty,
                     nameuser,
-                    setNameuser
+                    setNameuser,
+                    isLogin,
+                    setisLogin
                 }}>
                 <Switch>
                     <Route exact path='/home'>
                         <Container>
-                            <NewPlayer/>
+                            <Authentication />
                         </Container>
                     </Route>
                     <Route exact path='/category/sports'>

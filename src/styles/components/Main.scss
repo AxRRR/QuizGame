@@ -5,10 +5,31 @@
 
 a {
     text-decoration: none;
+    font-family: 'PrimaryFont';
+    color: rgb(255, 255, 255);
 }
 
 h1 {
     font-family: 'PrimaryFont';
+    color: rgb(255, 255, 255);
+}
+
+h2 {
+    font-family: 'PrimaryFont';
+    color: rgb(255, 255, 255);
+}
+
+h5 {
+    font-family: 'PrimaryFont';
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+
+p {
+    font-family: 'PrimaryFont';
+    // font-size: 30px;
+    margin-bottom: 0px;
+    margin-top: 0px;
     color: rgb(255, 255, 255);
 }
 
@@ -51,3 +72,5 @@ body {
     }
     
 }
+
+// BUTTONS

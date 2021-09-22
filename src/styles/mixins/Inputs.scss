@@ -1,0 +1,22 @@
+@mixin InputStyle($size, $bgcolor) {
+    @if $size == large {
+        width: 100%;
+        font-size: 50px;
+    }
+    @else if $size == medium {
+        width: 60%;
+        font-size: 30px;
+    }
+    @else if $size == small {
+        width: 30%;
+        font-size: 20px;
+    }
+    color: grey;
+    margin-bottom: 10px;
+    font-family: 'PrimaryFont';
+    background-color: $bgcolor;
+    border-color: transparent;
+    border-radius: 15px;
+    text-align: center;
+    border-style: none;
+}

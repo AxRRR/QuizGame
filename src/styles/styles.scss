@@ -1,6 +1,13 @@
 @import './settings';
 @import './base';
 
+@import './helpers/LettersStyle.scss';
+
+@import './mixins/Containers.scss';
+@import './mixins/Buttons.scss';
+@import './mixins/Inputs.scss';
+@import './mixins/Images.scss';
+
 @import './components/Main.scss';
 @import './components/Home.scss';
 @import './components/Checkbox.scss';

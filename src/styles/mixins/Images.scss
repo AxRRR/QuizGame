@@ -1,0 +1,9 @@
+@mixin ImagesStyle($w: auto, $h: auto, $p: 0px, $mt: 0px, $mb: 0px, $ml: 0px, $mr: 0px) {
+    width: $w;
+    height: $h;
+    padding: $p;
+    margin-top: $mt;
+    margin-bottom: $mb;
+    margin-left: $ml;
+    margin-right: $mr;
+}

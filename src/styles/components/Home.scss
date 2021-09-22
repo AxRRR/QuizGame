@@ -1,3 +1,8 @@
+@use 'Containers';
+@use 'Buttons';
+// use '../helpers/LettersStyle.scss';
+
+
 @font-face {
     font-family: 'PrimaryFont';
     src: url('../../assets/Fonts/BebasNeue-Regular.ttf');
@@ -31,34 +36,89 @@
 
 .home {
     &--Container {
-        width: 65%;
-        margin-right: auto;
-        margin-left: auto;
+        @include ContainerStyle(65%, auto, 0px, $main, 60px);
     }
     &--Input {
-        color: grey;
-        width: 100%;
-        font-size: 50px;
-        font-family: 'PrimaryFont';
-        background-color: $primary;
-        border-color: transparent;
-        border-radius: 15px;
-        text-align: center;
-        border-style: none;
+        @include InputStyle('large', white)
     }
     &--Button {
-        width: 100%;
-        height: 4rem;
-        color: grey;
-        font-family: 'PrimaryFont';
-        background-color: white;
-        border-color: transparent;
-        border-radius: 15px;
-        font-size: 50px;
+        @include ButtonStyle('large', 5rem, $hoverpink, rgb(255, 255, 255));
+    }
+    &--Register {
+        @include ContainerStyle(100%, auto, 0px, $main, 20px);
+        font-size: 25px;
+        text-align: right;
+    }
+    &--Social {
+        @include ContainerStyle(60%);
+    }
+}
+
+.auth {
+    &--Container {
+        display: flex;
+        @include ContainerStyle(75%, 5rem, 0px, $main, 0px);
+    }
+    &--Button {
+        @include ButtonStyle('small', $optionalbtn,grey, 30px, 15px, 5px);
+    }
+}
+
+.main {
+    &--container {
+        @include ContainerStyle(90%, auto, 0px, $main, 0px, 0px);
+        border-top: 1px solid $hoverpink;
+        border-left: 1px solid $hoverpink;
+        border-right: 1px solid $hoverpink;
+        margin-left: 0px;
+        display: flex;
+        padding-left: 26.3px;
+        padding-right: 26.3px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    &--fcontainer {
+        @include ContainerStyle(50%, auto, 0px, $main, 0px, 15px);
+        text-align: left;
+    }
+    &--scontainer {
+        @include ContainerStyle(50%, auto, 0px, $main, 25px, 15px);
+        text-align: left;
+        display: inline-table
+    }
+    &--profile {
+        @include ImagesStyle(35%, 7rem, 0px);
+        margin-top: 20px;
+        border-radius: 100%;
+    }
+    &--button {
+        @include ButtonStyle('small', 1.8rem, $hoverpink, white)
+    }
+}
+
+.gm {
+    &--main {
+        @include ContainerStyle(100%);
+        display: flex;
+    }
+    &--container {
+        @include ContainerStyle(33.3%, auto, 0px, $optional, 0px, 0px, 20px);
+        border-radius: 5px;
+        display: flex;
+        transition: all 0.6s ease;
+        cursor: pointer;
         &:hover {
-            background-color: $optional;
-            // color: white;
+            background-color: $hoverpink;
         }
+    }
+    &--images {
+        @include ImagesStyle(100%, auto, 0px);
+    }
+    &--icontainer {
+        @include ContainerStyle(50%, 7rem, 0px, transparent);
+    }
+    &--tcontainer {
+        @include ContainerStyle(50%, 7rem, 0px, transparent);
     }
 }
 
@@ -69,12 +129,12 @@
             float: left;
         }
         &--Input {
-            color: grey;
+            color: rgb(36, 36, 36);
             width: 100%;
             font-size: 30px;
             height: 4rem;
             font-family: 'PrimaryFont';
-            background-color: $primary;
+            background-color: $secondmorad;
             border-color: transparent;
             border-radius: 15px;
             text-align: center;
@@ -83,7 +143,7 @@
         &--Button {
             width: 100%;
             height: 4rem;
-            color: grey;
+            color: rgb(36, 36, 36);
             font-family: 'PrimaryFont';
             background-color: white;
             border-color: transparent;
@@ -91,7 +151,7 @@
             font-size: 50px;
             &:hover {
                 background-color: $optional;
-                // color: white;
+                color: white;
             }
         }
     }

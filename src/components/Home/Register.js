@@ -1,12 +1,13 @@
 import React, { Fragment, useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 import { NameUserContext } from '../../Context/NameUserContext';
-import { httpRequests } from '../../helpers/httpRequests';
+import { AuthRequest } from '../../helpers/AuthRequest';
 import IsEmpty from '../../helpers/IsEmpty';
 import { useForm } from '../../hooks/useForm';
 // import { Sports } from '../Categories/Sports';
 import { Home } from './Home';
 
-export const NewPlayer = () => {
+export const Register = ({ hideAuth }) => {
     const { setIsEmpty, setNameuser } = useContext(NameUserContext);
 
     const [showComponent, setshowComponent] = useState(true)
@@ -23,23 +24,22 @@ export const NewPlayer = () => {
             return alert('Debes rellenar el campo correctamente');
         }
         else {
-            // setNameuser(form.nick)
-            // setIsEmpty(true)
-            const name = form.nick;
-            const password = form.password;
-
-            response = await httpRequests('POST', 'auth/login', { name, password });
-            const body = await response.json();
-
-            //ESTO ES LA PETICION PARA EL LOGIN NO DEL REGISTRO
-            //STATUS OK (y)
-            console.log(body.status)
-
+            const { body } = await AuthRequest('register', form.nick, form.password);
             if(body.status){
-                console.log(body)
+                // ACÄ PONDREMOS UN CARGADOR...
+                setNameuser(body.name);
+                setIsEmpty(true);
+                hideAuth();
+                // localStorage.setItem('user', JSON.stringify(this.state))
             } else {
-                console.log(body.message)
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Error: Ocurrió un error',
+                    text: 'El nombre de usuario que elegiste ya está registrado en nuestra base de datos.',
+                    confirmButtonText: 'Aceptar'
+                })
             }
+            console.log(body)
         }
         setshowComponent(false)
     }
@@ -47,7 +47,7 @@ export const NewPlayer = () => {
     return (
         <Fragment>
             {showComponent && <div>
-                <h1 style={{textAlign: 'center'}}>Ingresa tu nombre para continuar</h1>
+                <h1 style={{textAlign: 'center'}}>Ingresa tus datos para registrate</h1>
                 <div className='home--Container'>
                     <form onSubmit={handlerNameUserChange}>
                         <input 

@@ -1,14 +1,38 @@
 import React, { Fragment, useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { NameUserContext } from '../../Context/NameUserContext';
+import { Gamemode } from './Gamemode';
+import ProfileDefault from '../../assets/images/defaultimg.png'
 
 export const Home = () => {
     const { nameuser } = useContext(NameUserContext);
 
     return (
         <Fragment>
-            <h1>¡Hola {nameuser}, escoge una categoria para comenzar el juego!</h1>
-            <header className='ContainerStyle'>
+            <main className='main--container'>
+                <div className='main--fcontainer'>
+                    <img 
+                        src={ProfileDefault}
+                        alt='profile'
+                        className='main--profile' 
+                    />
+                    <h2 style={{color: '#b41d84'}}>¡Hola {nameuser}!</h2>
+                </div>
+                <div className='main--scontainer'>
+                    {/* <h1  style={{color: '#9937F5'}}>Estadisticas</h1> */}
+                    <p>Ganadas: 202</p>
+                    <p>Perdidas: 20</p>
+                    <p>Versus ganados: 20</p>
+                    <p>Grupal ganados: 20</p>
+                    <p>Lugar en el top: 13</p>
+                    <p>Puntuacion general: 2003393</p>
+                    <button className='main--button'>Ver top mundial</button>
+                </div>
+            </main>
+            <header>
+                <Gamemode /> 
+            </header>
+            {/* <header className='ContainerStyle'>
                 <Link to='/category/sports' className='headerCategory--Container'>
                     <div className='headerCategory--Font'>
                         <img 
@@ -49,7 +73,7 @@ export const Home = () => {
                         <span>Tecnologia</span>
                     </div>
                 </Link>
-            </header>
+            </header> */}
         </Fragment>
     );
 };
