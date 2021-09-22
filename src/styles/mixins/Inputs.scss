@@ -1,4 +1,4 @@
-@mixin InputStyle($size, $bgcolor) {
+@mixin InputStyle($size, $bgcolor, $h: auto) {
     @if $size == large {
         width: 100%;
         font-size: 50px;
@@ -12,6 +12,7 @@
         font-size: 20px;
     }
     color: grey;
+    height: $h;
     margin-bottom: 10px;
     font-family: 'PrimaryFont';
     background-color: $bgcolor;

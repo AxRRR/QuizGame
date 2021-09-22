@@ -1,0 +1,17 @@
+@mixin SelectionStyle(
+        $w: 100%, 
+        $h: 3.5rem, 
+        $c: white, 
+        $f: 24px,  
+        $bg: $main, 
+    ) { 
+    width: $w;
+    height: $h;
+    font-size: $f;
+    border-radius: 15px;
+    background-color: $bg;
+    text-align: center;
+    font-family: 'PrimaryFont';
+    color: $c;
+    border: 1px solid $hoverpink;
+}

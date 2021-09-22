@@ -1,5 +1,6 @@
 @use 'Containers';
 @use 'Buttons';
+@use 'Selection';
 // use '../helpers/LettersStyle.scss';
 
 
@@ -39,7 +40,7 @@
         @include ContainerStyle(65%, auto, 0px, $main, 60px);
     }
     &--Input {
-        @include InputStyle('large', white)
+        @include InputStyle('large', white);
     }
     &--Button {
         @include ButtonStyle('large', 5rem, $hoverpink, rgb(255, 255, 255));
@@ -92,7 +93,7 @@
         border-radius: 100%;
     }
     &--button {
-        @include ButtonStyle('small', 1.8rem, $hoverpink, white)
+        @include ButtonStyle('small', 1.8rem, $hoverpink, white);
     }
 }
 
@@ -119,6 +120,52 @@
     }
     &--tcontainer {
         @include ContainerStyle(50%, 7rem, 0px, transparent);
+    }
+}
+
+.join {
+    &--main {
+        @include ContainerStyle(92%, auto, 20px, $hoverpink);
+        margin-left: 0px;
+        display: flex;
+    }
+    &--fcontainer {
+        @include ContainerStyle(40%, auto, 0px, $hoverpink);
+    }
+    &--scontainer {
+        @include ContainerStyle(60%, auto, 0px, $hoverpink);
+    } 
+    &--input {
+        @include InputStyle('large', white, 3rem);
+        font-size: 25px;
+    }
+    &--button {
+        @include ButtonStyle('large', 4rem, $hoverpink, white);
+    } 
+}
+
+.tc {
+    &--main {
+        @include ContainerStyle(100%);
+        display: flex;
+    }
+    &--fcontainer {
+        @include ContainerStyle(70%)
+    }
+    &--scontainer {
+        @include ContainerStyle(30%);
+        margin-top: 0px;
+    }
+    &--selection {
+        @include SelectionStyle(90%);
+    }
+    &--input {
+        @include InputStyle('medium', white, 3rem);
+        width: 90%;
+    }
+    &--button {
+        @include ButtonStyle('medium', 4rem, $hoverpink, white);
+        width: 91%;
     }
 }
 

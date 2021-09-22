@@ -30,7 +30,67 @@ export const Home = () => {
                 </div>
             </main>
             <header>
-                <Gamemode /> 
+                <section className='join--main'>
+                    <div className='join--fcontainer'>
+                        <h5>Únete a una partida con amigos, ingresa el código de invitación: </h5>
+                    </div>
+                    <div className='join--scontainer'>
+                        <div>
+                            <input 
+                                className='join--input' 
+                                placeholder='H4SD-DS66-EDSA-4402'
+                            />
+                        </div>
+                        <button className='join--button'>Unirme</button>
+                    </div>
+                </section>
+                <section>
+                    <Gamemode /> 
+                </section>
+                <section className='tc--main'>
+                    <div className='tc--fcontainer'>
+                        <div>
+                            <h2>Tipo de preguntas:</h2>
+                            <select className='tc--selection'>
+                                <option>Al azar</option>
+                                <option>Deportes</option>
+                                <option>Cine y Televisión</option>
+                                <option>Tecnologia</option>
+                                <option>Historia</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h2>Cantidad de preguntas por ronda:</h2>
+                            <select className='tc--selection'>
+                                <option>5</option>
+                                <option>10</option>
+                                <option>15</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h2>Tiempo para responder(en segundos):</h2>
+                            <input 
+                                className='tc--input' 
+                                placeholder='Especifica una cantidad en segundos'
+                            />
+                        </div>
+                        <button className='tc--button'>Buscar jugadores...</button>
+                    </div>
+                    <div className='tc--scontainer'>
+                        <h2>Top:</h2>
+                        <p>1. AxR: 20393</p>
+                        <p>2. Pedro: 12033</p>
+                        <p>3. Cheri: 29383</p>
+                        <p>4. Evolution: 2933</p>
+                        <p>5. Ner0x: 2332</p>
+                        <p>6. brunosoniico: 293</p>
+                        <p>7. Galenco: 291</p>
+                        <p>8. Fer: 213</p>
+                        <p>9. Breyner: 193</p>
+                        <p>10. Nilware: 93</p>
+                    </div>
+                </section>
             </header>
             {/* <header className='ContainerStyle'>
                 <Link to='/category/sports' className='headerCategory--Container'>
