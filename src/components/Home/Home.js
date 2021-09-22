@@ -5,18 +5,23 @@ import { Gamemode } from './Gamemode';
 import ProfileDefault from '../../assets/images/defaultimg.png'
 
 export const Home = () => {
-    const { nameuser } = useContext(NameUserContext);
+    const { dataUser } = useContext(NameUserContext);
 
     return (
         <Fragment>
             <main className='main--container'>
                 <div className='main--fcontainer'>
-                    <img 
+                    {!dataUser.profileimg ? <img 
                         src={ProfileDefault}
                         alt='profile'
                         className='main--profile' 
-                    />
-                    <h2 style={{color: '#b41d84'}}>¡Hola {nameuser}!</h2>
+                    /> : 
+                        <img 
+                            src={dataUser.profileimg}
+                            alt='profile'
+                            className='main--profile' 
+                    />}
+                    <h2 style={{color: '#b41d84'}}>¡Hola {dataUser.name}!</h2>
                 </div>
                 <div className='main--scontainer'>
                     {/* <h1  style={{color: '#9937F5'}}>Estadisticas</h1> */}

@@ -5,28 +5,31 @@ import { Authentication } from './components/Home/Authentication';
 import { NameUserContext } from './Context/NameUserContext';
 import { Container } from './helpers/Container';
 import { SportsQuestions } from './resources/SportsQuiz';
+import { Home } from './components/Home/Home';
 
 export const QuizGame = () => {
     const [showSports, setShowSports] = useState(true)
-    const [isEmpty, setIsEmpty] = useState(false)
-    const [nameuser, setNameuser] = useState(null)
-    const [isLogin, setisLogin] = useState(false)
+    const [dataUser, setDataUser] = useState({})
+    const [isLogin, setIsLogin] = useState(false)
 
     return (
         <div>
             <NameUserContext.Provider
                 value={{
-                    isEmpty,
-                    setIsEmpty,
-                    nameuser,
-                    setNameuser,
+                    dataUser, 
+                    setDataUser,
                     isLogin,
-                    setisLogin
+                    setIsLogin
                 }}>
                 <Switch>
-                    <Route exact path='/home'>
+                    <Route exact path='/login'>
                         <Container>
                             <Authentication />
+                        </Container>
+                    </Route>
+                    <Route exact path='/home'>
+                        <Container>
+                            <Home />
                         </Container>
                     </Route>
                     <Route exact path='/category/sports'>

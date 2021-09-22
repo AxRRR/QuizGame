@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useState } from 'react';
 import GoogleLogin from 'react-google-login';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { NameUserContext } from '../../Context/NameUserContext';
 import { AuthRequest } from '../../helpers/AuthRequest';
@@ -8,10 +8,9 @@ import IsEmpty from '../../helpers/IsEmpty';
 import { useForm } from '../../hooks/useForm';
 import { LoadingPage } from '../others/LoadingPage';
 // import { Sports } from '../Categories/Sports';
-import { Home } from './Home';
 
-export const Login = ({hideAuth}) => {
-    const { setIsEmpty, setNameuser } = useContext(NameUserContext);
+export const Login = () => {
+    const { setDataUser, setIsLogin } = useContext(NameUserContext);
 
     const [showComponent, setshowComponent] = useState(true)
     const [form, handlerInputChange] = useForm({
@@ -38,8 +37,11 @@ export const Login = ({hideAuth}) => {
                 LoadingPage(true);
                     setTimeout(() => {
                     // ACÄ PONDREMOS UN CARGADOR...
-                    setNameuser(body.name);
-                    setIsEmpty(true);
+                    setDataUser({
+                        name: body.name,
+                        profileimg: body.profileimg
+                    });
+                    setIsLogin(true);
                     LoadingPage(false);
                     setshowComponent(false);
                 }, 4000);
@@ -65,8 +67,11 @@ export const Login = ({hideAuth}) => {
                 LoadingPage(true);
                     setTimeout(() => {
                     // ACÄ PONDREMOS UN CARGADOR...
-                    setNameuser(GoogleCredentials.profileObj.name);
-                    setIsEmpty(true);
+                    setDataUser({
+                        name: GoogleCredentials.profileObj.name,
+                        profileimg: GoogleCredentials.profileObj.imageUrl
+                    });
+                    setIsLogin(true);
                     LoadingPage(false);
                     setshowComponent(false);
                 }, 4000);
@@ -123,7 +128,7 @@ export const Login = ({hideAuth}) => {
                     </div>
                 </div>
             </div>}
-            {showComponent === false && <Home />}
+            {showComponent === false && <Redirect to='/home' />}
         </Fragment>
     );
 };
