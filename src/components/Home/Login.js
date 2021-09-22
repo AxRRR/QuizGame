@@ -40,9 +40,8 @@ export const Login = ({hideAuth}) => {
                     // ACÄ PONDREMOS UN CARGADOR...
                     setNameuser(body.name);
                     setIsEmpty(true);
-                    // hideAuth();
                     LoadingPage(false);
-                    setshowComponent(false)
+                    setshowComponent(false);
                 }, 4000);
                 } else {
                     return Swal.fire({
@@ -56,10 +55,32 @@ export const Login = ({hideAuth}) => {
         }
     }
 
-    const responseGoogle = ({ profileObj }) => {
-        console.log(profileObj)
+    const responseGoogle = async(GoogleCredentials ) => {
+        console.log(GoogleCredentials)
+        if(GoogleCredentials.profileObj !== undefined){
+            await AuthRequest('logingoogle', 
+                GoogleCredentials.profileObj.name, 
+                GoogleCredentials.profileObj.googleId,
+                GoogleCredentials.profileObj.imageUrl);
+                LoadingPage(true);
+                    setTimeout(() => {
+                    // ACÄ PONDREMOS UN CARGADOR...
+                    setNameuser(GoogleCredentials.profileObj.name);
+                    setIsEmpty(true);
+                    LoadingPage(false);
+                    setshowComponent(false);
+                }, 4000);
+        } else {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Error: Ocurrió un error',
+                text: 'Ocurrió un error al autenticarte. Prueba nuevamente.',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        // console.log(GoogleCredentials)
         
-      }
+    }
 
     return (
         <Fragment>
