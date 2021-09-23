@@ -3,11 +3,10 @@ import GoogleLogin from 'react-google-login';
 import { Link, Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { NameUserContext } from '../../Context/NameUserContext';
-import { AuthRequest } from '../../helpers/AuthRequest';
 import IsEmpty from '../../helpers/IsEmpty';
+import { RequestGoogleLogin, RequestLoginUser } from '../../helpers/LoginHandler';
 import { useForm } from '../../hooks/useForm';
 import { LoadingPage } from '../others/LoadingPage';
-// import { Sports } from '../Categories/Sports';
 
 export const Login = () => {
     const { setDataUser, setIsLogin } = useContext(NameUserContext);
@@ -18,74 +17,53 @@ export const Login = () => {
         password: ''
     })
 
-    const handlerNameUserChange = async(e) => {
-        e.preventDefault();
-        let response = IsEmpty(form.nick)
-        
-        if(response === false){
-            return Swal.fire({
-                icon: 'error',
-                title: 'Error: Campos inválidos',
-                text: 'Debes de rellenar los campos (min: 3 caracteres)',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        else {
-            
-            const { body } = await AuthRequest('login', form.nick, form.password);
-            if(body.status){
-                LoadingPage(true);
-                    setTimeout(() => {
-                    // ACÄ PONDREMOS UN CARGADOR...
-                    setDataUser({
-                        name: body.name,
-                        profileimg: body.profileimg
-                    });
-                    setIsLogin(true);
-                    LoadingPage(false);
-                    setshowComponent(false);
-                }, 4000);
-                } else {
-                    return Swal.fire({
-                        icon: 'error',
-                        title: 'Error: Credenciales no válidas',
-                        text: 'El usuario o contraseña no existen.',
-                        confirmButtonText: 'Aceptar'
-                    })
-                }
-                console.log(body)
-        }
+const handlerNameUserChange = async(e) => {
+    e.preventDefault();
+    
+    let response = IsEmpty(form.nick)
+    
+    if(response === false){
+        return Swal.fire({
+            icon: 'error',
+            title: 'Error: Campos inválidos',
+            text: 'Debes de rellenar los campos (min: 3 caracteres)',
+            confirmButtonText: 'Aceptar'
+        })
     }
+    else {
+        const body = await RequestLoginUser(form.nick, form.password);
 
-    const responseGoogle = async(GoogleCredentials ) => {
-        console.log(GoogleCredentials)
-        if(GoogleCredentials.profileObj !== undefined){
-            await AuthRequest('logingoogle', 
-                GoogleCredentials.profileObj.name, 
-                GoogleCredentials.profileObj.googleId,
-                GoogleCredentials.profileObj.imageUrl);
-                LoadingPage(true);
-                    setTimeout(() => {
-                    // ACÄ PONDREMOS UN CARGADOR...
-                    setDataUser({
-                        name: GoogleCredentials.profileObj.name,
-                        profileimg: GoogleCredentials.profileObj.imageUrl
-                    });
-                    setIsLogin(true);
-                    LoadingPage(false);
-                    setshowComponent(false);
-                }, 4000);
-        } else {
-            return Swal.fire({
-                icon: 'error',
-                title: 'Error: Ocurrió un error',
-                text: 'Ocurrió un error al autenticarte. Prueba nuevamente.',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        // console.log(GoogleCredentials)
-        
+        LoadingPage(true);
+            setTimeout(() => {
+                // ACÄ PONDREMOS UN CARGADOR...
+                setDataUser({
+                    name: body.name,
+                    profileimg: body.profileimg
+                });
+                setIsLogin(true);
+                LoadingPage(false);
+                setshowComponent(false);
+            }, 4000);
     }
+}
+
+const responseGoogle = async(GoogleCredentials) => {
+    const { body } = await RequestGoogleLogin(GoogleCredentials); 
+
+    console.log(body)
+
+    LoadingPage(true);
+        setTimeout(() => {
+        // ACÄ PONDREMOS UN CARGADOR...
+        setDataUser({
+            name: body.name,
+            profileimg: body.profileimg
+        });
+        setIsLogin(true);
+        LoadingPage(false);
+        setshowComponent(false);
+    }, 4000);
+}
 
     return (
         <Fragment>

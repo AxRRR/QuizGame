@@ -3,6 +3,7 @@ import React, { Fragment, useContext } from 'react';
 import { NameUserContext } from '../../Context/NameUserContext';
 import { Gamemode } from './Gamemode';
 import ProfileDefault from '../../assets/images/defaultimg.png'
+import { CreateParty } from './home-components/CreateParty';
 
 export const Home = () => {
     const { dataUser } = useContext(NameUserContext);
@@ -53,35 +54,7 @@ export const Home = () => {
                     <Gamemode /> 
                 </section>
                 <section className='tc--main'>
-                    <div className='tc--fcontainer'>
-                        <div>
-                            <h2>Tipo de preguntas:</h2>
-                            <select className='tc--selection'>
-                                <option>Al azar</option>
-                                <option>Deportes</option>
-                                <option>Cine y Televisión</option>
-                                <option>Tecnologia</option>
-                                <option>Historia</option>
-                            </select>
-                        </div>
-                        <div>
-                            <h2>Cantidad de preguntas por ronda:</h2>
-                            <select className='tc--selection'>
-                                <option>5</option>
-                                <option>10</option>
-                                <option>15</option>
-                                <option>20</option>
-                            </select>
-                        </div>
-                        <div>
-                            <h2>Tiempo para responder(en segundos):</h2>
-                            <input 
-                                className='tc--input' 
-                                placeholder='Especifica una cantidad en segundos'
-                            />
-                        </div>
-                        <button className='tc--button'>Buscar jugadores...</button>
-                    </div>
+                    <CreateParty />
                     <div className='tc--scontainer'>
                         <h2>Top:</h2>
                         <p>1. AxR: 20393</p>

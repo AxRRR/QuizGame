@@ -1,6 +1,7 @@
 @mixin ButtonStyle(
         $size,
         $h: 4rem,
+        $w: 0px,
         $bg: white, 
         $fontcolor: grey, 
         $fontsize: 0px, 
@@ -8,30 +9,45 @@
         $mr: 0px
     ) {
     @if $size == large {
-        width: 100%;
         @if $fontsize != 0px {
             font-size: $fontsize;
         }
         @else {
             font-size: 50px;
         }
+        @if $w != 0px {
+            width: $w;
+        }
+        @else {
+            width: 100%;
+        }
     }
     @else if $size == medium {
-        width: 60%;
         @if $fontsize != 0px {
             font-size: $fontsize;
         }
         @else {
             font-size: 30px;
         }
+        @if $w != 0px {
+            width: $w;
+        }
+        @else {
+            width: 60%;
+        }
     }
     @else if $size == small {
-        width: 45%;
         @if $fontsize != 0px {
             font-size: $fontsize;
         }
         @else {
             font-size: 20px;
+        }
+        @if $w != 0px {
+            width: $w;
+        }
+        @else {
+            width: 45%;
         }
     }
     height: $h;
