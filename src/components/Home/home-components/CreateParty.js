@@ -2,15 +2,33 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router';
 import { NameUserContext } from '../../../Context/NameUserContext';
 import { PartyRequest } from '../../../helpers/PartyRequest';
+import { useForm } from '../../../hooks/useForm';
 
 export const CreateParty = () => {
 
     const { PartyData, setPartyData } = useContext(NameUserContext);
+    
+    const [PartyForm, handlerInputChange] = useForm({
+        leader: '',
+        typeQuestions: '',
+        players: '',
+        timeQuestions: ''
+    });
+
 
     const CreateParty = async(e) => {
         e.preventDefault();
 
-        const response = await PartyRequest('new', 'Alex', 1, 5, 30);
+        // console.log(PartyForm.leader, 
+        //     PartyForm.typeQuestions, 
+        //     PartyForm.players, 
+        //     PartyForm.timeQuestions)
+
+        const response = await PartyRequest('new', 
+            'Alex', 
+            PartyForm.typeQuestions, 
+            PartyForm.players, 
+            PartyForm.timeQuestions);
         setPartyData(response);
     }
 
@@ -23,21 +41,27 @@ export const CreateParty = () => {
             <form onSubmit={CreateParty}>
                 <div>
                     <h2>Tipo de preguntas:</h2>
-                    <select className='tc--selection'>
-                        <option>Al azar</option>
-                        <option>Deportes</option>
-                        <option>Cine y Televisión</option>
-                        <option>Tecnologia</option>
-                        <option>Historia</option>
+                    <select 
+                        name='typeQuestions'
+                        className='tc--selection'
+                        onChange={handlerInputChange}>
+                        <option value={1}>Al azar</option>
+                        <option value={2}>Deportes</option>
+                        <option value={3}>Cine y Televisión</option>
+                        <option value={4}>Tecnologia</option>
+                        <option value={5}>Historia</option>
                     </select>
                 </div>
                 <div>
                     <h2>Cantidad de preguntas por ronda:</h2>
-                    <select className='tc--selection'>
-                        <option>5</option>
-                        <option>10</option>
-                        <option>15</option>
-                        <option>20</option>
+                    <select 
+                        name='players'
+                        className='tc--selection'
+                        onChange={handlerInputChange}>
+                        <option value={5}>5</option>
+                        <option value={10}>10</option>
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
                     </select>
                 </div>
                 <div>
@@ -45,6 +69,8 @@ export const CreateParty = () => {
                     <input 
                         className='tc--input' 
                         placeholder='Especifica una cantidad en segundos'
+                        name='timeQuestions'
+                        onChange={handlerInputChange}
                     />
                 </div>
                 <button 

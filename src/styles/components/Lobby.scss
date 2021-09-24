@@ -20,12 +20,12 @@
         margin-top: 0px;
     }
     &--fcontent {
-        @include ContainerStyle(100%, 25rem, 20px, $hoverpink);
+        @include ContainerStyle(100%, 23rem, 20px, $hoverpink);
         border-radius: 15px;
         margin-top: 0px;
     }
     &--scontent {
-        @include ContainerStyle(100%, 12.5rem, 20px, $main);
+        @include ContainerStyle(100%, 17rem, 20px, $main);
         margin-top: 10px;
         border-top: 1px solid $hoverpink;
         border-left: 1px solid $hoverpink;
@@ -37,8 +37,22 @@
     &--button {
         @include ButtonStyle('medium', 3.5rem, 55%, $hoverpink, white);
     }
+    &--sbutton {
+        @include ButtonStyle('medium', 3rem, 100%, $secondary2, $optional);
+    }
     &--input {
         @include InputStyle('large', white, 3rem);
+    }
+    &--username {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        // background-color: $main;
+        border-top: 1px solid $main;
+        border-left: 1px solid $main;
+        border-right: 1px solid $main;
+        border-bottom: 1px solid $main;
+        text-align: center;
+        border-radius: 15px;
     }
 
 }

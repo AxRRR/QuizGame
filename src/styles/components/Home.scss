@@ -43,7 +43,7 @@
         @include InputStyle('large', white);
     }
     &--Button {
-        @include ButtonStyle('large', 5rem, $hoverpink, rgb(255, 255, 255));
+        @include ButtonStyle('large', 5rem, 0px, $hoverpink, rgb(255, 255, 255));
     }
     &--Register {
         @include ContainerStyle(100%, auto, 0px, $main, 20px);
@@ -61,7 +61,7 @@
         @include ContainerStyle(75%, 5rem, 0px, $main, 0px);
     }
     &--Button {
-        @include ButtonStyle('small', $optionalbtn,grey, 30px, 15px, 5px);
+        @include ButtonStyle('small', 0px, 0px, $optionalbtn,grey, 30px, 15px, 5px);
     }
 }
 
@@ -93,7 +93,7 @@
         border-radius: 100%;
     }
     &--button {
-        @include ButtonStyle('small', 1.8rem, $hoverpink, white);
+        @include ButtonStyle('small', 1.8rem, auto, $hoverpink, white);
     }
 }
 
@@ -140,7 +140,7 @@
         font-size: 25px;
     }
     &--button {
-        @include ButtonStyle('large', 4rem, $hoverpink, white);
+        @include ButtonStyle('large', 4rem, 100%, $hoverpink, white);
     } 
 }
 
@@ -164,7 +164,7 @@
         width: 90%;
     }
     &--button {
-        @include ButtonStyle('medium', 4rem, $hoverpink, white);
+        @include ButtonStyle('medium', 4rem, 0px, $hoverpink, white);
         width: 91%;
     }
 }
