@@ -6,7 +6,7 @@ import { useForm } from '../../../hooks/useForm';
 
 export const CreateParty = () => {
 
-    const { PartyData, setPartyData } = useContext(NameUserContext);
+    const { PartyData, setPartyData, dataUser } = useContext(NameUserContext);
     
     const [PartyForm, handlerInputChange] = useForm({
         leader: '',
@@ -18,18 +18,20 @@ export const CreateParty = () => {
 
     const CreateParty = async(e) => {
         e.preventDefault();
-
-        // console.log(PartyForm.leader, 
-        //     PartyForm.typeQuestions, 
-        //     PartyForm.players, 
-        //     PartyForm.timeQuestions)
+        console.log(PartyData, dataUser)
 
         const response = await PartyRequest('new', 
-            'Alex', 
+            dataUser.body.name, 
             PartyForm.typeQuestions, 
             PartyForm.players, 
-            PartyForm.timeQuestions);
+            PartyForm.timeQuestions,
+            dataUser.body.name,
+            dataUser.body.id,
+            dataUser.body.profileimg,
+            dataUser.body);
         setPartyData(response);
+
+        console.log(PartyData)
     }
 
     if(PartyData.body.status){

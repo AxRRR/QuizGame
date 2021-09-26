@@ -4,6 +4,8 @@ import { NameUserContext } from '../../Context/NameUserContext';
 import { Gamemode } from './Gamemode';
 import ProfileDefault from '../../assets/images/defaultimg.png'
 import { CreateParty } from './home-components/CreateParty';
+import { Top } from './home-components/Top';
+import { Join } from './home-components/Join';
 
 export const Home = () => {
     const { dataUser } = useContext(NameUserContext);
@@ -12,17 +14,17 @@ export const Home = () => {
         <Fragment>
             <main className='main--container'>
                 <div className='main--fcontainer'>
-                    {!dataUser.profileimg ? <img 
+                    {!dataUser.body.profileimg ? <img 
                         src={ProfileDefault}
                         alt='profile'
                         className='main--profile' 
                     /> : 
                         <img 
-                            src={dataUser.profileimg}
+                            src={dataUser.body.profileimg}
                             alt='profile'
                             className='main--profile' 
                     />}
-                    <h2 style={{color: '#b41d84'}}>¡Hola {dataUser.name}!</h2>
+                    <h2 style={{color: '#b41d84'}}>¡Hola {dataUser.body.name}!</h2>
                 </div>
                 <div className='main--scontainer'>
                     {/* <h1  style={{color: '#9937F5'}}>Estadisticas</h1> */}
@@ -36,38 +38,15 @@ export const Home = () => {
                 </div>
             </main>
             <header>
-                <section className='join--main'>
-                    <div className='join--fcontainer'>
-                        <h5>Únete a una partida con amigos, ingresa el código de invitación: </h5>
-                    </div>
-                    <div className='join--scontainer'>
-                        <div>
-                            <input 
-                                className='join--input' 
-                                placeholder='H4SD-DS66-EDSA-4402'
-                            />
-                        </div>
-                        <button className='join--button'>Unirme</button>
-                    </div>
+                <section>
+                    <Join />
                 </section>
                 <section>
                     <Gamemode /> 
                 </section>
                 <section className='tc--main'>
                     <CreateParty />
-                    <div className='tc--scontainer'>
-                        <h2>Top:</h2>
-                        <p>1. AxR: 20393</p>
-                        <p>2. Pedro: 12033</p>
-                        <p>3. Cheri: 29383</p>
-                        <p>4. Evolution: 2933</p>
-                        <p>5. Ner0x: 2332</p>
-                        <p>6. brunosoniico: 293</p>
-                        <p>7. Galenco: 291</p>
-                        <p>8. Fer: 213</p>
-                        <p>9. Breyner: 193</p>
-                        <p>10. Nilware: 93</p>
-                    </div>
+                    <Top />
                 </section>
             </header>
             {/* <header className='ContainerStyle'>

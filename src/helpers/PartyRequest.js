@@ -5,13 +5,21 @@ export const PartyRequest = async(
         leader, 
         typeQuestions, 
         players, 
-        timeQuestions
+        timeQuestions,
+        name,
+        id,
+        profileimg,
+        dataUser
     ) => {
     const response = await httpRequests('POST', `party/${type}`, { 
         leader, 
         typeQuestions, 
         players, 
-        timeQuestions 
+        timeQuestions,
+        name,
+        id,
+        profileimg,
+        dataUser
     });
     const body = await response.json();
 

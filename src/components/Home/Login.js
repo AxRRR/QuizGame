@@ -56,8 +56,7 @@ const responseGoogle = async(GoogleCredentials) => {
         setTimeout(() => {
         // ACÄ PONDREMOS UN CARGADOR...
         setDataUser({
-            name: body.name,
-            profileimg: body.profileimg
+            body
         });
         setIsLogin(true);
         LoadingPage(false);
