@@ -31,11 +31,11 @@ export const CreateParty = () => {
             dataUser.body);
         setPartyData(response);
 
-        console.log(PartyData)
+        console.log(response)
     }
 
     if(PartyData.body.status){
-        return <Redirect to={`/lobby/party-${PartyData.body.partycode}`} />
+        return <Redirect to={`/lobby/party-${PartyData.body.PartySave.partycode}`} />
     }
 
     return (

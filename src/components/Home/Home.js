@@ -14,7 +14,7 @@ export const Home = () => {
         <Fragment>
             <main className='main--container'>
                 <div className='main--fcontainer'>
-                    {!dataUser.body.profileimg ? <img 
+                    {/* {!dataUser.body.profileimg ? <img 
                         src={ProfileDefault}
                         alt='profile'
                         className='main--profile' 
@@ -23,7 +23,7 @@ export const Home = () => {
                             src={dataUser.body.profileimg}
                             alt='profile'
                             className='main--profile' 
-                    />}
+                    />} */}
                     <h2 style={{color: '#b41d84'}}>¡Hola {dataUser.body.name}!</h2>
                 </div>
                 <div className='main--scontainer'>

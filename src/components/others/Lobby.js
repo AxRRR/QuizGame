@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export const Lobby = () => {
     const { PartyData } = useContext(NameUserContext);
-    const { partycode, leader } = PartyData.body;
+    const { partycode, leader } = PartyData.body.PartySave;
 
     const [Copied, setCopied] = useState(false)
 

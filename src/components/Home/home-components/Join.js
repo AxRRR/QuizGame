@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { NameUserContext } from '../../../Context/NameUserContext';
+import { UpdateParty } from '../../../helpers/UpdateParty';
 import { useForm } from '../../../hooks/useForm';
 
 export const Join = () => {
+
+    const { PartyData, setPartyData, dataUser } = useContext(NameUserContext);
+
     const [PartyForm, handlerInputChange] = useForm({
         partycode: ''
     });
 
-    const JoinHandler = (e) => {
+    const JoinHandler = async(e) => {
         e.preventDefault();
 
+        const response = await UpdateParty('join', 
+            PartyForm.partycode,
+            dataUser
+        );
+        setPartyData(response);
+
+        console.log(response)
         console.log(PartyForm.partycode)
     }
 

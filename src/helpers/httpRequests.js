@@ -15,6 +15,15 @@ export const httpRequests = (method = 'GET', endpoint, data) => {
                 },
                 body: JSON.stringify(data)
             })
+
+        case 'PUT':
+        return fetch(request, {
+            method,
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
     
         default:
             break;
