@@ -18,24 +18,24 @@ export const CreateParty = () => {
 
     const CreateParty = async(e) => {
         e.preventDefault();
-        console.log(PartyData, dataUser)
+        // console.log(PartyData, dataUser)
 
         const response = await PartyRequest('new', 
-            dataUser.body.name, 
+            dataUser.name, 
             PartyForm.typeQuestions, 
             PartyForm.players, 
             PartyForm.timeQuestions,
-            dataUser.body.name,
-            dataUser.body.id,
-            dataUser.body.profileimg,
-            dataUser.body);
-        setPartyData(response);
+            dataUser.name,
+            dataUser.id,
+            dataUser.profileimg,
+            dataUser);
+        setPartyData(response.body);
 
-        console.log(response)
+        console.log('El response viene asi', response.body)
     }
 
-    if(PartyData.body.status){
-        return <Redirect to={`/lobby/party-${PartyData.body.PartySave.partycode}`} />
+    if(PartyData.status){
+        return <Redirect to={`/lobby/party-${PartyData.PartySave.partycode}`} />
     }
 
     return (
@@ -47,11 +47,21 @@ export const CreateParty = () => {
                         name='typeQuestions'
                         className='tc--selection'
                         onChange={handlerInputChange}>
-                        <option value={1}>Al azar</option>
-                        <option value={2}>Deportes</option>
-                        <option value={3}>Cine y Televisión</option>
-                        <option value={4}>Tecnologia</option>
-                        <option value={5}>Historia</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={1}>Al azar</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={2}>Deportes</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={3}>Cine y Televisión</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={4}>Tecnologia</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={5}>Historia</option>
                     </select>
                 </div>
                 <div>
@@ -60,10 +70,18 @@ export const CreateParty = () => {
                         name='players'
                         className='tc--selection'
                         onChange={handlerInputChange}>
-                        <option value={5}>5</option>
-                        <option value={10}>10</option>
-                        <option value={15}>15</option>
-                        <option value={20}>20</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={5}>5</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={10}>10</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={15}>15</option>
+                        <option 
+                            onChange={handlerInputChange}
+                            value={20}>20</option>
                     </select>
                 </div>
                 <div>

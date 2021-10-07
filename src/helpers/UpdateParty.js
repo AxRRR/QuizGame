@@ -7,10 +7,10 @@ export const UpdateParty = async(
     ) => {
     const response = await httpRequests('PUT', `party/${type}`, { 
         partycode,
-        id: dataUser.body.id,
-        name: dataUser.body.name, 
+        id: dataUser.id,
+        name: dataUser.name, 
     });
-    console.log(dataUser.body.id, dataUser.body.name)
+    console.log(dataUser.id, dataUser.name)
 
     const body = await response.json();
 

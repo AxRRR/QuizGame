@@ -10,6 +10,8 @@ import { Join } from './home-components/Join';
 export const Home = () => {
     const { dataUser } = useContext(NameUserContext);
 
+    console.log('El data user', dataUser)
+
     return (
         <Fragment>
             <main className='main--container'>
@@ -24,7 +26,7 @@ export const Home = () => {
                             alt='profile'
                             className='main--profile' 
                     />} */}
-                    <h2 style={{color: '#b41d84'}}>¡Hola {dataUser.body.name}!</h2>
+                    <h2 style={{color: '#b41d84'}}>¡Hola {dataUser.name}!</h2>
                 </div>
                 <div className='main--scontainer'>
                     {/* <h1  style={{color: '#9937F5'}}>Estadisticas</h1> */}

@@ -8,7 +8,7 @@ import { useForm } from '../../hooks/useForm';
 import { Home } from './Home';
 
 export const Register = ({ hideAuth }) => {
-    const { setIsEmpty, setNameuser } = useContext(NameUserContext);
+    const { setDataUser, setIsLogin } = useContext(NameUserContext);
 
     const [showComponent, setshowComponent] = useState(true)
     const [form, handlerInputChange] = useForm({
@@ -27,10 +27,9 @@ export const Register = ({ hideAuth }) => {
             const { body } = await AuthRequest('register', form.nick, form.password);
             if(body.status){
                 // ACÄ PONDREMOS UN CARGADOR...
-                setNameuser(body.name);
-                setIsEmpty(true);
-                hideAuth();
-                // localStorage.setItem('user', JSON.stringify(this.state))
+                setDataUser({
+                    name: body.name
+                });
             } else {
                 return Swal.fire({
                     icon: 'error',

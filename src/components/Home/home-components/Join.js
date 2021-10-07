@@ -1,9 +1,24 @@
 import React, { useContext } from 'react';
+import { io } from 'socket.io-client';
 import { NameUserContext } from '../../../Context/NameUserContext';
 import { UpdateParty } from '../../../helpers/UpdateParty';
 import { useForm } from '../../../hooks/useForm';
 
 export const Join = () => {
+    const socket = io('http://localhost:4000', {
+        transports: ["websocket", "polling"]
+    });
+
+    socket.on('userlist', (arg) => {
+        console.log(arg);
+    });
+
+    // const socket = io("http://localhost:4000", {
+    // withCredentials: true,
+    //  extraHeaders: {
+    //   "my-custom-header": "abcd"
+    // }
+    // });
 
     const { PartyData, setPartyData, dataUser } = useContext(NameUserContext);
 
@@ -13,15 +28,16 @@ export const Join = () => {
 
     const JoinHandler = async(e) => {
         e.preventDefault();
-
+        const { partycode } = PartyForm;
         const response = await UpdateParty('join', 
-            PartyForm.partycode,
+            partycode,
             dataUser
         );
-        setPartyData(response);
+        setPartyData(response.body);
 
         console.log(response)
-        console.log(PartyForm.partycode)
+        // console.log(PartyForm.partycode)
+        socket.emit('join', partycode);
     }
 
 

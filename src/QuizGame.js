@@ -8,6 +8,7 @@ import { SportsQuestions } from './resources/SportsQuiz';
 import { Home } from './components/Home/Home';
 import { TestCode } from './TestCode';
 import { Lobby } from './components/others/Lobby';
+import { Register } from './components/Home/Register';
 
 export const QuizGame = () => {
     const [showSports, setShowSports] = useState(true)
@@ -33,6 +34,11 @@ export const QuizGame = () => {
                 <Switch>
                     <Route exact path='/test'>
                         <TestCode />    
+                    </Route>
+                    <Route exact path='/register'>
+                        <Container>
+                            <Register />
+                        </Container>
                     </Route>
                     <Route exact path='/login'>
                         <Container>

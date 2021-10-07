@@ -19,6 +19,8 @@ export const RequestLoginUser = async(name, password) => {
 
 export const RequestGoogleLogin = async( GoogleCredentials ) => {
 
+    console.log('Aca se llama el GOOGLE', GoogleCredentials.profileObj)
+
     if(GoogleCredentials.profileObj !== undefined){
         const DataUser = await AuthRequest('logingoogle', 
             GoogleCredentials.profileObj.name, 

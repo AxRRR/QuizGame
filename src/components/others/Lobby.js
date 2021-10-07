@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export const Lobby = () => {
     const { PartyData } = useContext(NameUserContext);
-    const { partycode, leader } = PartyData.body.PartySave;
+    const { partycode, leader } = PartyData.PartySave;
 
     const [Copied, setCopied] = useState(false)
 
@@ -22,9 +22,12 @@ export const Lobby = () => {
                 <div className='lobby--scontainer'>
                     <div className='lobby--fcontent'>
                         <h2 style={{marginTop: '0px'}}>Esperando más jugadores...</h2>
-                        <h5 className='lobby--username'>Alex</h5>
-                        <h5 className='lobby--username'>Breyner</h5>
-                        <h5 className='lobby--username'>Pedro</h5>
+                        {!!PartyData && PartyData.Users.map((User) =>
+                            <h5 
+                                className='lobby--username'
+                                key={User._id}>{User.name}
+                            </h5>
+                        )}
                     </div>
                     <div className='lobby--scontent'>
                         <h1 style={{marginTop: '0px'}}>Invita a tus amigos con el código:</h1>

@@ -37,6 +37,7 @@ const handlerNameUserChange = async(e) => {
             setTimeout(() => {
                 // ACÄ PONDREMOS UN CARGADOR...
                 setDataUser({
+                    id: body.id,
                     name: body.name,
                     profileimg: body.profileimg
                 });
@@ -61,7 +62,7 @@ const responseGoogle = async(GoogleCredentials) => {
         setIsLogin(true);
         LoadingPage(false);
         setshowComponent(false);
-    }, 4000);
+    }, 1000);
 }
 
     return (
@@ -91,17 +92,17 @@ const responseGoogle = async(GoogleCredentials) => {
                         </button>
                     </form>
                     <div className='home--Register'>
-                        <Link to='/auth/register'>¿No estás registrado?</Link>
+                        <Link to='/register'>¿No estás registrado?</Link>
                     </div>
                     <div className='home--Social'>
-                        <GoogleLogin
+                        {/* <GoogleLogin
                             clientId="376676721491-30jufr1sfi4pd9a46mjs3ea741ncgid5.apps.googleusercontent.com"
                             buttonText="Inicia sesión con Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
                             cookiePolicy={'single_host_origin'}
                             className='GoogleStyle'
-                        />
+                        /> */}
                     </div>
                 </div>
             </div>}
